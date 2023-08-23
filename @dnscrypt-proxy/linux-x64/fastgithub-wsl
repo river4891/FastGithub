@@ -1,0 +1,22 @@
+#! /bin/sh
+
+# for WSL service register, reference: https://github.com/dotnetcore/FastGithub/issues/158
+# put this file to path /etc/init.d/ in WSL
+# type command `serice <filename> start`
+
+# notice change path
+# path="/path/to/fastgithub"
+
+case "$1" in
+	start)
+		$path &
+		;;
+	stop)
+		kill -9 $(ps -aux | awk -F '[ ]+' '/fastgithub/{print $2}')
+		;;
+
+	*)
+		echo "Usage: $N {start|stop|restart|force-reload|status}" >&2
+		exit 1
+		;;
+esac

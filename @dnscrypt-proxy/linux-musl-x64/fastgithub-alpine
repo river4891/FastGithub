@@ -1,0 +1,18 @@
+#!/sbin/openrc-run
+
+# for Aline Linux
+# Please put this file into path: /etc/init.d/
+# type command "service fastgithub start"
+
+name="fastgithub"
+
+# please change this path
+command="/path/to/fastgihub"
+
+depend() {
+        after sshd
+}
+
+start(){
+        $command &
+}
